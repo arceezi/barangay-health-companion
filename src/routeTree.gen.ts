@@ -9,8 +9,74 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TipsRouteImport } from './routes/tips'
+import { Route as ShowcaseRouteImport } from './routes/showcase'
+import { Route as RiskResultsRouteImport } from './routes/risk-results'
+import { Route as RemindersRouteImport } from './routes/reminders'
+import { Route as RecommendationsRouteImport } from './routes/recommendations'
+import { Route as ProfileSetupRouteImport } from './routes/profile-setup'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as MapRouteImport } from './routes/map'
+import { Route as HomeRouteImport } from './routes/home'
+import { Route as CheckRouteImport } from './routes/check'
+import { Route as BhwRouteImport } from './routes/bhw'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TipsRoute = TipsRouteImport.update({
+  id: '/tips',
+  path: '/tips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShowcaseRoute = ShowcaseRouteImport.update({
+  id: '/showcase',
+  path: '/showcase',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RiskResultsRoute = RiskResultsRouteImport.update({
+  id: '/risk-results',
+  path: '/risk-results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemindersRoute = RemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecommendationsRoute = RecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileSetupRoute = ProfileSetupRouteImport.update({
+  id: '/profile-setup',
+  path: '/profile-setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapRoute = MapRouteImport.update({
+  id: '/map',
+  path: '/map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeRoute = HomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckRoute = CheckRouteImport.update({
+  id: '/check',
+  path: '/check',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BhwRoute = BhwRouteImport.update({
+  id: '/bhw',
+  path: '/bhw',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +85,186 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bhw': typeof BhwRoute
+  '/check': typeof CheckRoute
+  '/home': typeof HomeRoute
+  '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
+  '/profile-setup': typeof ProfileSetupRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reminders': typeof RemindersRoute
+  '/risk-results': typeof RiskResultsRoute
+  '/showcase': typeof ShowcaseRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bhw': typeof BhwRoute
+  '/check': typeof CheckRoute
+  '/home': typeof HomeRoute
+  '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
+  '/profile-setup': typeof ProfileSetupRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reminders': typeof RemindersRoute
+  '/risk-results': typeof RiskResultsRoute
+  '/showcase': typeof ShowcaseRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bhw': typeof BhwRoute
+  '/check': typeof CheckRoute
+  '/home': typeof HomeRoute
+  '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
+  '/profile-setup': typeof ProfileSetupRoute
+  '/recommendations': typeof RecommendationsRoute
+  '/reminders': typeof RemindersRoute
+  '/risk-results': typeof RiskResultsRoute
+  '/showcase': typeof ShowcaseRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bhw'
+    | '/check'
+    | '/home'
+    | '/map'
+    | '/profile'
+    | '/profile-setup'
+    | '/recommendations'
+    | '/reminders'
+    | '/risk-results'
+    | '/showcase'
+    | '/tips'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bhw'
+    | '/check'
+    | '/home'
+    | '/map'
+    | '/profile'
+    | '/profile-setup'
+    | '/recommendations'
+    | '/reminders'
+    | '/risk-results'
+    | '/showcase'
+    | '/tips'
+  id:
+    | '__root__'
+    | '/'
+    | '/bhw'
+    | '/check'
+    | '/home'
+    | '/map'
+    | '/profile'
+    | '/profile-setup'
+    | '/recommendations'
+    | '/reminders'
+    | '/risk-results'
+    | '/showcase'
+    | '/tips'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BhwRoute: typeof BhwRoute
+  CheckRoute: typeof CheckRoute
+  HomeRoute: typeof HomeRoute
+  MapRoute: typeof MapRoute
+  ProfileRoute: typeof ProfileRoute
+  ProfileSetupRoute: typeof ProfileSetupRoute
+  RecommendationsRoute: typeof RecommendationsRoute
+  RemindersRoute: typeof RemindersRoute
+  RiskResultsRoute: typeof RiskResultsRoute
+  ShowcaseRoute: typeof ShowcaseRoute
+  TipsRoute: typeof TipsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tips': {
+      id: '/tips'
+      path: '/tips'
+      fullPath: '/tips'
+      preLoaderRoute: typeof TipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/showcase': {
+      id: '/showcase'
+      path: '/showcase'
+      fullPath: '/showcase'
+      preLoaderRoute: typeof ShowcaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/risk-results': {
+      id: '/risk-results'
+      path: '/risk-results'
+      fullPath: '/risk-results'
+      preLoaderRoute: typeof RiskResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reminders': {
+      id: '/reminders'
+      path: '/reminders'
+      fullPath: '/reminders'
+      preLoaderRoute: typeof RemindersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recommendations': {
+      id: '/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof RecommendationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile-setup': {
+      id: '/profile-setup'
+      path: '/profile-setup'
+      fullPath: '/profile-setup'
+      preLoaderRoute: typeof ProfileSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/map': {
+      id: '/map'
+      path: '/map'
+      fullPath: '/map'
+      preLoaderRoute: typeof MapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
+      preLoaderRoute: typeof HomeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/check': {
+      id: '/check'
+      path: '/check'
+      fullPath: '/check'
+      preLoaderRoute: typeof CheckRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bhw': {
+      id: '/bhw'
+      path: '/bhw'
+      fullPath: '/bhw'
+      preLoaderRoute: typeof BhwRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +277,18 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BhwRoute: BhwRoute,
+  CheckRoute: CheckRoute,
+  HomeRoute: HomeRoute,
+  MapRoute: MapRoute,
+  ProfileRoute: ProfileRoute,
+  ProfileSetupRoute: ProfileSetupRoute,
+  RecommendationsRoute: RecommendationsRoute,
+  RemindersRoute: RemindersRoute,
+  RiskResultsRoute: RiskResultsRoute,
+  ShowcaseRoute: ShowcaseRoute,
+  TipsRoute: TipsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

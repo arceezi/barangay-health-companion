@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { PhoneFrame } from "@/components/PhoneFrame";
 
 function NotFoundComponent() {
   return (
@@ -72,11 +73,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "KalusuganAI — Maagang Gabay para sa Kalusugan ng Barangay" },
+      { name: "description", content: "AI-powered preventive health companion for Filipino barangay residents. Risk screening, reminders, community heatmaps, bilingual tips." },
+      { name: "author", content: "KalusuganAI" },
+      { property: "og:title", content: "KalusuganAI" },
+      { property: "og:description", content: "Maagang Gabay para sa Kalusugan ng Barangay" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -113,7 +114,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <PhoneFrame>
+        <Outlet />
+      </PhoneFrame>
     </QueryClientProvider>
   );
 }
