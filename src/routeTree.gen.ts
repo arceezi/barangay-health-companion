@@ -14,6 +14,7 @@ import { Route as RiskResultsRouteImport } from './routes/risk-results'
 import { Route as RemindersRouteImport } from './routes/reminders'
 import { Route as RecommendationsRouteImport } from './routes/recommendations'
 import { Route as ProfileSetupRouteImport } from './routes/profile-setup'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as CheckRouteImport } from './routes/check'
@@ -44,6 +45,11 @@ const ProfileSetupRoute = ProfileSetupRouteImport.update({
   path: '/profile-setup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MapRoute = MapRouteImport.update({
   id: '/map',
   path: '/map',
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
   '/profile-setup': typeof ProfileSetupRoute
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
   '/profile-setup': typeof ProfileSetupRoute
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/map': typeof MapRoute
+  '/profile': typeof ProfileRoute
   '/profile-setup': typeof ProfileSetupRoute
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/check'
     | '/home'
     | '/map'
+    | '/profile'
     | '/profile-setup'
     | '/recommendations'
     | '/reminders'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/check'
     | '/home'
     | '/map'
+    | '/profile'
     | '/profile-setup'
     | '/recommendations'
     | '/reminders'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/check'
     | '/home'
     | '/map'
+    | '/profile'
     | '/profile-setup'
     | '/recommendations'
     | '/reminders'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   CheckRoute: typeof CheckRoute
   HomeRoute: typeof HomeRoute
   MapRoute: typeof MapRoute
+  ProfileRoute: typeof ProfileRoute
   ProfileSetupRoute: typeof ProfileSetupRoute
   RecommendationsRoute: typeof RecommendationsRoute
   RemindersRoute: typeof RemindersRoute
@@ -184,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileSetupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/map': {
       id: '/map'
       path: '/map'
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckRoute: CheckRoute,
   HomeRoute: HomeRoute,
   MapRoute: MapRoute,
+  ProfileRoute: ProfileRoute,
   ProfileSetupRoute: ProfileSetupRoute,
   RecommendationsRoute: RecommendationsRoute,
   RemindersRoute: RemindersRoute,
