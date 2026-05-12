@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TipsRouteImport } from './routes/tips'
+import { Route as ShowcaseRouteImport } from './routes/showcase'
 import { Route as RiskResultsRouteImport } from './routes/risk-results'
 import { Route as RemindersRouteImport } from './routes/reminders'
 import { Route as RecommendationsRouteImport } from './routes/recommendations'
@@ -24,6 +25,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const TipsRoute = TipsRouteImport.update({
   id: '/tips',
   path: '/tips',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShowcaseRoute = ShowcaseRouteImport.update({
+  id: '/showcase',
+  path: '/showcase',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RiskResultsRoute = RiskResultsRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
+  '/showcase': typeof ShowcaseRoute
   '/tips': typeof TipsRoute
 }
 export interface FileRoutesByTo {
@@ -101,6 +108,7 @@ export interface FileRoutesByTo {
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
+  '/showcase': typeof ShowcaseRoute
   '/tips': typeof TipsRoute
 }
 export interface FileRoutesById {
@@ -115,6 +123,7 @@ export interface FileRoutesById {
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
+  '/showcase': typeof ShowcaseRoute
   '/tips': typeof TipsRoute
 }
 export interface FileRouteTypes {
@@ -130,6 +139,7 @@ export interface FileRouteTypes {
     | '/recommendations'
     | '/reminders'
     | '/risk-results'
+    | '/showcase'
     | '/tips'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -143,6 +153,7 @@ export interface FileRouteTypes {
     | '/recommendations'
     | '/reminders'
     | '/risk-results'
+    | '/showcase'
     | '/tips'
   id:
     | '__root__'
@@ -156,6 +167,7 @@ export interface FileRouteTypes {
     | '/recommendations'
     | '/reminders'
     | '/risk-results'
+    | '/showcase'
     | '/tips'
   fileRoutesById: FileRoutesById
 }
@@ -170,6 +182,7 @@ export interface RootRouteChildren {
   RecommendationsRoute: typeof RecommendationsRoute
   RemindersRoute: typeof RemindersRoute
   RiskResultsRoute: typeof RiskResultsRoute
+  ShowcaseRoute: typeof ShowcaseRoute
   TipsRoute: typeof TipsRoute
 }
 
@@ -180,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/tips'
       fullPath: '/tips'
       preLoaderRoute: typeof TipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/showcase': {
+      id: '/showcase'
+      path: '/showcase'
+      fullPath: '/showcase'
+      preLoaderRoute: typeof ShowcaseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/risk-results': {
@@ -266,6 +286,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecommendationsRoute: RecommendationsRoute,
   RemindersRoute: RemindersRoute,
   RiskResultsRoute: RiskResultsRoute,
+  ShowcaseRoute: ShowcaseRoute,
   TipsRoute: TipsRoute,
 }
 export const routeTree = rootRouteImport
