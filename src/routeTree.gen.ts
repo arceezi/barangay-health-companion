@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RiskResultsRouteImport } from './routes/risk-results'
+import { Route as RemindersRouteImport } from './routes/reminders'
 import { Route as RecommendationsRouteImport } from './routes/recommendations'
 import { Route as ProfileSetupRouteImport } from './routes/profile-setup'
 import { Route as MapRouteImport } from './routes/map'
@@ -20,6 +21,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const RiskResultsRoute = RiskResultsRouteImport.update({
   id: '/risk-results',
   path: '/risk-results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RemindersRoute = RemindersRouteImport.update({
+  id: '/reminders',
+  path: '/reminders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecommendationsRoute = RecommendationsRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/map': typeof MapRoute
   '/profile-setup': typeof ProfileSetupRoute
   '/recommendations': typeof RecommendationsRoute
+  '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/map': typeof MapRoute
   '/profile-setup': typeof ProfileSetupRoute
   '/recommendations': typeof RecommendationsRoute
+  '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/map': typeof MapRoute
   '/profile-setup': typeof ProfileSetupRoute
   '/recommendations': typeof RecommendationsRoute
+  '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/profile-setup'
     | '/recommendations'
+    | '/reminders'
     | '/risk-results'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/profile-setup'
     | '/recommendations'
+    | '/reminders'
     | '/risk-results'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/map'
     | '/profile-setup'
     | '/recommendations'
+    | '/reminders'
     | '/risk-results'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   MapRoute: typeof MapRoute
   ProfileSetupRoute: typeof ProfileSetupRoute
   RecommendationsRoute: typeof RecommendationsRoute
+  RemindersRoute: typeof RemindersRoute
   RiskResultsRoute: typeof RiskResultsRoute
 }
 
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/risk-results'
       fullPath: '/risk-results'
       preLoaderRoute: typeof RiskResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reminders': {
+      id: '/reminders'
+      path: '/reminders'
+      fullPath: '/reminders'
+      preLoaderRoute: typeof RemindersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recommendations': {
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   MapRoute: MapRoute,
   ProfileSetupRoute: ProfileSetupRoute,
   RecommendationsRoute: RecommendationsRoute,
+  RemindersRoute: RemindersRoute,
   RiskResultsRoute: RiskResultsRoute,
 }
 export const routeTree = rootRouteImport
