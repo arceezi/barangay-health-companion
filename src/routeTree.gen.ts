@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TipsRouteImport } from './routes/tips'
 import { Route as RiskResultsRouteImport } from './routes/risk-results'
 import { Route as RemindersRouteImport } from './routes/reminders'
 import { Route as RecommendationsRouteImport } from './routes/recommendations'
@@ -18,6 +19,11 @@ import { Route as HomeRouteImport } from './routes/home'
 import { Route as CheckRouteImport } from './routes/check'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TipsRoute = TipsRouteImport.update({
+  id: '/tips',
+  path: '/tips',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiskResultsRoute = RiskResultsRouteImport.update({
   id: '/risk-results',
   path: '/risk-results',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/recommendations': typeof RecommendationsRoute
   '/reminders': typeof RemindersRoute
   '/risk-results': typeof RiskResultsRoute
+  '/tips': typeof TipsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/recommendations'
     | '/reminders'
     | '/risk-results'
+    | '/tips'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/recommendations'
     | '/reminders'
     | '/risk-results'
+    | '/tips'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/recommendations'
     | '/reminders'
     | '/risk-results'
+    | '/tips'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,10 +144,18 @@ export interface RootRouteChildren {
   RecommendationsRoute: typeof RecommendationsRoute
   RemindersRoute: typeof RemindersRoute
   RiskResultsRoute: typeof RiskResultsRoute
+  TipsRoute: typeof TipsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tips': {
+      id: '/tips'
+      path: '/tips'
+      fullPath: '/tips'
+      preLoaderRoute: typeof TipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risk-results': {
       id: '/risk-results'
       path: '/risk-results'
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecommendationsRoute: RecommendationsRoute,
   RemindersRoute: RemindersRoute,
   RiskResultsRoute: RiskResultsRoute,
+  TipsRoute: TipsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
