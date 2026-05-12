@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RiskResultsRouteImport } from './routes/risk-results'
+import { Route as RecommendationsRouteImport } from './routes/recommendations'
 import { Route as ProfileSetupRouteImport } from './routes/profile-setup'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as CheckRouteImport } from './routes/check'
@@ -18,6 +19,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const RiskResultsRoute = RiskResultsRouteImport.update({
   id: '/risk-results',
   path: '/risk-results',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecommendationsRoute = RecommendationsRouteImport.update({
+  id: '/recommendations',
+  path: '/recommendations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileSetupRoute = ProfileSetupRouteImport.update({
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/profile-setup': typeof ProfileSetupRoute
+  '/recommendations': typeof RecommendationsRoute
   '/risk-results': typeof RiskResultsRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/profile-setup': typeof ProfileSetupRoute
+  '/recommendations': typeof RecommendationsRoute
   '/risk-results': typeof RiskResultsRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,34 @@ export interface FileRoutesById {
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/profile-setup': typeof ProfileSetupRoute
+  '/recommendations': typeof RecommendationsRoute
   '/risk-results': typeof RiskResultsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/check' | '/home' | '/profile-setup' | '/risk-results'
+  fullPaths:
+    | '/'
+    | '/check'
+    | '/home'
+    | '/profile-setup'
+    | '/recommendations'
+    | '/risk-results'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/check' | '/home' | '/profile-setup' | '/risk-results'
-  id: '__root__' | '/' | '/check' | '/home' | '/profile-setup' | '/risk-results'
+  to:
+    | '/'
+    | '/check'
+    | '/home'
+    | '/profile-setup'
+    | '/recommendations'
+    | '/risk-results'
+  id:
+    | '__root__'
+    | '/'
+    | '/check'
+    | '/home'
+    | '/profile-setup'
+    | '/recommendations'
+    | '/risk-results'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +104,7 @@ export interface RootRouteChildren {
   CheckRoute: typeof CheckRoute
   HomeRoute: typeof HomeRoute
   ProfileSetupRoute: typeof ProfileSetupRoute
+  RecommendationsRoute: typeof RecommendationsRoute
   RiskResultsRoute: typeof RiskResultsRoute
 }
 
@@ -86,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/risk-results'
       fullPath: '/risk-results'
       preLoaderRoute: typeof RiskResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recommendations': {
+      id: '/recommendations'
+      path: '/recommendations'
+      fullPath: '/recommendations'
+      preLoaderRoute: typeof RecommendationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile-setup': {
@@ -124,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   CheckRoute: CheckRoute,
   HomeRoute: HomeRoute,
   ProfileSetupRoute: ProfileSetupRoute,
+  RecommendationsRoute: RecommendationsRoute,
   RiskResultsRoute: RiskResultsRoute,
 }
 export const routeTree = rootRouteImport
