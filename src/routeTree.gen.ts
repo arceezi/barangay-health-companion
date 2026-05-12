@@ -18,6 +18,7 @@ import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as MapRouteImport } from './routes/map'
 import { Route as HomeRouteImport } from './routes/home'
 import { Route as CheckRouteImport } from './routes/check'
+import { Route as BhwRouteImport } from './routes/bhw'
 import { Route as IndexRouteImport } from './routes/index'
 
 const TipsRoute = TipsRouteImport.update({
@@ -65,6 +66,11 @@ const CheckRoute = CheckRouteImport.update({
   path: '/check',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BhwRoute = BhwRouteImport.update({
+  id: '/bhw',
+  path: '/bhw',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -73,6 +79,7 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bhw': typeof BhwRoute
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/map': typeof MapRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bhw': typeof BhwRoute
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/map': typeof MapRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bhw': typeof BhwRoute
   '/check': typeof CheckRoute
   '/home': typeof HomeRoute
   '/map': typeof MapRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/bhw'
     | '/check'
     | '/home'
     | '/map'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/bhw'
     | '/check'
     | '/home'
     | '/map'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/bhw'
     | '/check'
     | '/home'
     | '/map'
@@ -149,6 +161,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BhwRoute: typeof BhwRoute
   CheckRoute: typeof CheckRoute
   HomeRoute: typeof HomeRoute
   MapRoute: typeof MapRoute
@@ -225,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CheckRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bhw': {
+      id: '/bhw'
+      path: '/bhw'
+      fullPath: '/bhw'
+      preLoaderRoute: typeof BhwRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -237,6 +257,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BhwRoute: BhwRoute,
   CheckRoute: CheckRoute,
   HomeRoute: HomeRoute,
   MapRoute: MapRoute,
