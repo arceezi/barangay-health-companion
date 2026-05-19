@@ -12,7 +12,7 @@ const items = [
 export function BottomNav() {
   const { pathname } = useLocation();
   return (
-    <nav className="sticky bottom-0 left-0 right-0 z-40 mt-6 border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 backdrop-blur supports-[backdrop-filter]:bg-[color:var(--cream)]/80">
+    <nav className="sticky bottom-0 left-0 right-0 z-40 mt-auto border-t border-[color:var(--border)] bg-[color:var(--cream)]/95 backdrop-blur supports-[backdrop-filter]:bg-[color:var(--cream)]/80">
       <ul className="grid grid-cols-5 px-2 pt-2 pb-3">
         {items.map(({ to, label, icon: Icon }) => {
           const active = pathname.startsWith(to);
